@@ -1,6 +1,7 @@
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
 use yew::prelude::*;
+use stylist::{yew::styled_component, style};
 
 #[derive(Serialize, Deserialize)]
 struct MyObject {
@@ -8,7 +9,27 @@ struct MyObject {
     favorite_language: String,
 }
 
-#[function_component(App)]
+#[styled_component(App)]
+pub fn app() -> Html {
+    let stylesheet = style!(
+        r#"
+            h1 {
+                color: orange;
+            }
+            p {
+                color: white;
+            }
+        "#
+    ).unwrap();
+    html!{
+        <div class={stylesheet}>
+            <h1>{"Hello World!"}</h1>
+            <p>{"more text"}</p>
+        </div>
+    }
+}
+
+/* #[function_component(App)]
 pub fn app() -> Html {
     let name = "TsaoLun";
     let name_obj = MyObject {
@@ -43,7 +64,7 @@ pub fn app() -> Html {
             </ul>
         </>
     }
-}
+} */
 
 fn list_to_html(list: Vec<&str>) -> Vec<Html> {
     list.iter().map(|task| html! {<li>{task}</li>}).collect()
