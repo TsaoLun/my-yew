@@ -3,6 +3,8 @@ use serde::{Deserialize, Serialize};
 use yew::prelude::*;
 use stylist::{yew::styled_component, style};
 
+mod components;
+use components::atoms::main_title::{MainTitle, Color};
 #[derive(Serialize, Deserialize)]
 struct MyObject {
     username: String,
@@ -11,19 +13,10 @@ struct MyObject {
 
 #[styled_component(App)]
 pub fn app() -> Html {
-    let stylesheet = style!(
-        r#"
-            h1 {
-                color: orange;
-            }
-            p {
-                color: white;
-            }
-        "#
-    ).unwrap();
+    let main_title_load = Callback::from(|message: String| log!(message));
     html!{
-        <div class={stylesheet}>
-            <h1>{"Hello World!"}</h1>
+        <div>
+            <MainTitle title="Hi there!!!!!!!" color={Color::Normal} on_load={main_title_load}/>
             <p>{"more text"}</p>
         </div>
     }
