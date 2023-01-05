@@ -5,6 +5,7 @@ use stylist::{yew::styled_component, style};
 
 mod components;
 use components::atoms::main_title::{MainTitle, Color};
+use components::molecules::custom_form::CustomForm;
 #[derive(Serialize, Deserialize)]
 struct MyObject {
     username: String,
@@ -17,7 +18,7 @@ pub fn app() -> Html {
     html!{
         <div>
             <MainTitle title="Hi there!!!!!!!" color={Color::Normal} on_load={main_title_load}/>
-            <p>{"more text"}</p>
+            <CustomForm />
         </div>
     }
 }
