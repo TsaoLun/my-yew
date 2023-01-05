@@ -1,4 +1,4 @@
-use stylist::{yew::styled_component, style};
+use stylist::{style, yew::styled_component};
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
@@ -27,7 +27,8 @@ impl Color {
 
 #[styled_component(MainTitle)]
 pub fn main_title(props: &Props) -> Html {
-    let stylesheet = style!(r#"
+    let stylesheet = style!(
+        r#"
         .normal {
             color: white;
         }
@@ -37,7 +38,9 @@ pub fn main_title(props: &Props) -> Html {
         .error {
             color: red;
         }
-    "#).unwrap();
+    "#
+    )
+    .unwrap();
 
     props.on_load.emit("I loaded".to_owned());
 

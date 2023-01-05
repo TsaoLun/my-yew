@@ -1,10 +1,10 @@
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
+use stylist::{style, yew::styled_component};
 use yew::prelude::*;
-use stylist::{yew::styled_component, style};
 
 mod components;
-use components::atoms::main_title::{MainTitle, Color};
+use components::atoms::main_title::{Color, MainTitle};
 use components::molecules::custom_form::CustomForm;
 #[derive(Serialize, Deserialize)]
 struct MyObject {
@@ -15,7 +15,7 @@ struct MyObject {
 #[styled_component(App)]
 pub fn app() -> Html {
     let main_title_load = Callback::from(|message: String| log!(message));
-    html!{
+    html! {
         <div>
             <MainTitle title="Hi there!!!!!!!" color={Color::Normal} on_load={main_title_load}/>
             <CustomForm />

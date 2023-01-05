@@ -2,12 +2,12 @@ use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
-    pub label: AttrValue
+    pub label: AttrValue,
 }
 
 #[function_component(CustomButton)]
 pub fn custom_button(props: &Props) -> Html {
-    html!{
+    html! {
         <button>{&props.label}</button>
     }
 }

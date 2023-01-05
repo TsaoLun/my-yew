@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use crate::components::atoms::text_input::TextInput;
 use crate::components::atoms::custom_button::CustomButton;
+use crate::components::atoms::text_input::TextInput;
 #[function_component(CustomForm)]
 pub fn custom_form() -> Html {
     html! {

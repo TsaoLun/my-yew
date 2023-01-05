@@ -7,7 +7,7 @@ pub struct Props {
 
 #[function_component(TextInput)]
 pub fn text_input(props: &Props) -> Html {
-    html!{
+    html! {
         <input type="text" name={props.name.clone()}/>
     }
 }
