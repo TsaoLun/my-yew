@@ -1,14 +1,15 @@
 use std::ops::Deref;
 
 use crate::components::atoms::main_title::{Color, MainTitle};
-use crate::components::molecules::custom_form::CustomForm;
+use crate::components::molecules::custom_form::{CustomForm, Data};
+use crate::router::{switch, Route};
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
 use stylist::yew::styled_component;
 use yew::prelude::*;
 use yew::ContextProvider;
+use yew_router::prelude::*;
 
-use crate::components::molecules::custom_form::Data;
 #[derive(Serialize, Deserialize)]
 struct MyObject {
     username: String,
@@ -53,6 +54,9 @@ pub fn app() -> Html {
         <ContextProvider<User> context={user_state.deref().clone()}>
             <MainTitle title="Hi there!!!!!!!" color={Color::Normal} on_load={main_title_load}/>
             <CustomForm onsubmit={custom_form_submit}/>
+            <BrowserRouter>
+                <Switch<Route> render={switch} />
+            </BrowserRouter>
         </ContextProvider<User>>
     }
 }
@@ -96,5 +100,4 @@ pub fn app() -> Html {
 
 fn list_to_html(list: Vec<&str>) -> Vec<Html> {
     list.iter().map(|task| html! {<li>{task}</li>}).collect()
-}
-*/
+} */
