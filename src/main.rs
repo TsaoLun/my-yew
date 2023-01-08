@@ -1,5 +1,6 @@
-use my_yew::App;
+mod app;
 mod components;
+use app::App;
 fn main() {
     yew::Renderer::<App>::new().render();
 }

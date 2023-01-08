@@ -42,7 +42,7 @@ pub fn main_title(props: &Props) -> Html {
     )
     .unwrap();
 
-    props.on_load.emit("I loaded".to_owned());
+    props.on_load.emit("I loaded from main title.".to_owned());
 
     html! {
         <div class={stylesheet}>
