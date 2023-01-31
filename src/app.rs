@@ -1,8 +1,11 @@
 use std::ops::Deref;
 
 use crate::components::atoms::main_title::{Color, MainTitle};
-use crate::components::atoms::struct_hello::StructHello;
-use crate::components::molecules::custom_form::{CustomForm, Data};
+//use crate::components::atoms::struct_hello::StructHello;
+use crate::components::molecules::{
+    custom_form::{CustomForm, Data},
+    struct_counter::StructCounter,
+};
 use crate::router::{switch, Route};
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
@@ -10,6 +13,7 @@ use stylist::yew::styled_component;
 use yew::prelude::*;
 use yew::ContextProvider;
 use yew_router::prelude::*;
+
 #[derive(Serialize, Deserialize)]
 struct MyObject {
     username: String,
@@ -52,7 +56,8 @@ pub fn app() -> Html {
     };
     html! {
         <>
-        <div><StructHello /></div>
+        // <div><StructHello message={"Hello from app.rs".to_owned()}/></div>
+        <div><StructCounter /></div>
         <ContextProvider<User> context={user_state.deref().clone()}>
             <MainTitle title="Hi there!!!!!!!" color={Color::Normal} on_load={main_title_load}/>
             <CustomForm onsubmit={custom_form_submit}/>
